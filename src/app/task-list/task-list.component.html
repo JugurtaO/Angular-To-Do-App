@@ -1,0 +1,28 @@
+<h2>Task list </h2>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+
+
+            <th>ID</th>
+            <th>Text </th>
+            <th>author firstName</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+
+<tr *ngFor="let task of tasks">
+    <td>{{task.id}}</td>
+    <td>{{task.text}}</td>
+    <td>{{task.author.firstName}}</td>
+</tr>
+
+
+
+
+    </tbody>
+</table>
