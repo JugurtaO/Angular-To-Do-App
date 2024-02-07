@@ -1,28 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, computed, numberAttribute, signal } from '@angular/core';
 import { Task } from '../Models/task';
 import { NgFor } from '@angular/common';
 import { TaskService } from '../services/task.service';
+import { RouterOutlet } from '@angular/router';
+import { AddTaskComponent } from '../add-task/add-task.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor,RouterOutlet,AddTaskComponent,NavbarComponent],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css'
 })
 export class TaskListComponent implements OnInit {
-  
-  tasks: Task[]=[];
-  constructor(private taskService:TaskService){}
+
+  public tasks:Task[]=[] ;
+  constructor(private taskService: TaskService) { }
   ngOnInit(): void {
     this.getTasks();
   }
 
-  private getTasks(){
+  public getTasks() {
     //asynchronus call
-    this.taskService.getAllTasks().subscribe(data=>{
+    this.taskService.getAllTasks().subscribe(data => {
       this.tasks=data;
-      console.log(">>>>>>>",data);
     })
   }
+
+
+
+  public deleteTask(id: number) {
+    //notify the backend and delete the requested task
+    this.taskService.deleteTask(id).subscribe(data=>{
+      //Then update current tasks list
+      this.getTasks();
+    });
+  }
+ 
 }

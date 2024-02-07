@@ -1,25 +1,30 @@
 <h2>Task list </h2>
+<p>
 
+</p>
 <table class="table table-striped">
 
     <thead>
         <tr>
-
-
-            <th>ID</th>
-            <th>Text </th>
-            <th>author firstName</th>
+            <th>N°</th>
+            <th>text </th>
+            <th>author</th>
+            <th> actions
+            </th>
 
 
         </tr>
     </thead>
     <tbody>
 
-<tr *ngFor="let task of tasks">
-    <td>{{task.id}}</td>
-    <td>{{task.text}}</td>
-    <td>{{task.author.firstName}}</td>
-</tr>
+        <tr *ngFor="let task of tasks">
+            <td>{{task.id}}</td>
+            <td>{{task.text}}</td>
+            <td>{{task.author.firstName}}</td>
+            <td><button class="btn btn-light">view </button></td>
+            <td><button class="btn btn-info">edit </button></td>
+            <td> <button class="btn btn-danger" (click)="deleteTask(task.id)">delete </button></td>
+        </tr>
 
 
 

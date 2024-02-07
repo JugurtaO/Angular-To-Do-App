@@ -12,10 +12,23 @@ export class TaskService {
 
   private baseURL = "http://localhost:8080/tasks";
 
-  getAllTasks(): Observable<Task[]> {
+  public  getAllTasks(): Observable<Task[]> {
 
 
     return this.httpClient.get<Task[]>(`${this.baseURL}`);
   }
  
+  public getTaskById(task_id:number):Observable<Task>{
+    return this.httpClient.get<Task>(`${this.baseURL}/${task_id}`);
+  }
+
+  public deleteTask(id:number):Observable<String>{
+    //the request body is empty in this case
+    return this.httpClient.post(`${this.baseURL}/${id}/delete`,null,{responseType: 'text' });  
+  }
+  public addTask(task:Task):Observable<String>{
+    //the request body is empty in this case
+    return this.httpClient.post(`${this.baseURL}/add`,task,{responseType: 'text' });  
+  }
+
 }

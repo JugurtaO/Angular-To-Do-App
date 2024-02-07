@@ -1,0 +1,13 @@
+<form (submit)="addTask(task)">
+    
+    <div class="form-group">
+        <label for="text"> todo text</label>
+        <input type="text" name="text" id="text" class="form-control" [(ngModel)]="task.text">
+    </div>
+
+    <p>{{task.text}}</p>
+    <button class="btn btn-success">add</button>
+   
+</form>
+
+
