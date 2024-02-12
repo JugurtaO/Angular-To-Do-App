@@ -42,8 +42,11 @@ export class TaskListComponent implements OnInit {
 
 //navigate to update task page
   public updateTask(id:number){
-    this.router.navigate([`update/${id}`])
+    this.router.navigate([`/tasks/${id}/update`])
   }
 
+  public viewTask(id:number){
+    this.router.navigate([`/tasks/${id}`]);
+  }
  
 }

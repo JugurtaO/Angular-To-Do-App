@@ -21,7 +21,7 @@
             <td>{{task.id}}</td>
             <td>{{task.text}}</td>
             <td>{{task.author.firstName}}</td>
-            <td><button class="btn btn-light">view </button></td>
+            <td><button class="btn btn-light" (click)="viewTask(task.id)">view </button></td>
             <td><button class="btn btn-info" (click)="updateTask(task.id)">edit </button></td>
             <td> <button class="btn btn-danger" (click)="deleteTask(task.id)">delete </button></td>
         </tr>
