@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { Task } from '../Models/task';
-import { FormsModule, NgModel } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule} from '@angular/forms';
 import { User } from '../Models/user';
 import { TaskService } from '../services/task.service';
-
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [RouterOutlet, FormsModule],
+  imports: [RouterOutlet, FormsModule,MatFormFieldModule, MatInputModule],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css',
 
