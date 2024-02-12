@@ -1,7 +1,7 @@
-<h2>Task list </h2>
-<p>
+<div>
+    <h5>Task list </h5>
+</div>
 
-</p>
 <table class="table table-striped">
 
     <thead>
@@ -22,7 +22,7 @@
             <td>{{task.text}}</td>
             <td>{{task.author.firstName}}</td>
             <td><button class="btn btn-light">view </button></td>
-            <td><button class="btn btn-info">edit </button></td>
+            <td><button class="btn btn-info" (click)="updateTask(task.id)">edit </button></td>
             <td> <button class="btn btn-danger" (click)="deleteTask(task.id)">delete </button></td>
         </tr>
 

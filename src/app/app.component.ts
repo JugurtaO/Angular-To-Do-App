@@ -6,8 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { TaskService } from './services/task.service';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule, NgModel } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',

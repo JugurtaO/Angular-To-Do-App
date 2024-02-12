@@ -2,9 +2,11 @@ import { Component, OnInit, computed, numberAttribute, signal } from '@angular/c
 import { Task } from '../Models/task';
 import { NgFor } from '@angular/common';
 import { TaskService } from '../services/task.service';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { NavbarComponent } from '../navbar/navbar.component';
+
+
 
 @Component({
   selector: 'app-task-list',
@@ -16,7 +18,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 export class TaskListComponent implements OnInit {
 
   public tasks:Task[]=[] ;
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService, private router:Router) { }
   ngOnInit(): void {
     this.getTasks();
   }
@@ -37,5 +39,11 @@ export class TaskListComponent implements OnInit {
       this.getTasks();
     });
   }
+
+//navigate to update task page
+  public updateTask(id:number){
+    this.router.navigate([`update/${id}`])
+  }
+
  
 }

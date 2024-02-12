@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Task } from '../Models/task';
+import { UpdateTaskDTO } from '../Models/update-task-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,10 @@ export class TaskService {
   public addTask(task:Task):Observable<String>{
     //the request body is empty in this case
     return this.httpClient.post(`${this.baseURL}/add`,task,{responseType: 'text' });  
+  }
+
+  public updateTask(id:number,newTask:UpdateTaskDTO):Observable<String>{
+    return this.httpClient.post(`${this.baseURL}/${id}/update`,newTask,{responseType:'text'});
   }
 
 }

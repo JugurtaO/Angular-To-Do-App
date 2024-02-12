@@ -1,0 +1,13 @@
+<form (submit)="updateTask(task.id)">
+    
+    <div class="form-group">
+        <label for="text"> todo text</label>
+        <input type="text" name="newText" id="text" class="form-control" [(ngModel)]="task.text">
+    </div>
+
+    <p>{{task.text}}</p>
+    <button class="btn btn-info">update</button>
+   
+</form>
+
+
