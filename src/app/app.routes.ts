@@ -3,24 +3,35 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { UpdateTaskComponent } from './update-task/update-task.component';
 import { ViewTaskComponent } from './view-task/view-task.component';
+import { SignupLoginComponent } from './signup-login/signup-login.component';
+import { AppComponent } from './app.component';
 
 export const routes: Routes = [
     {
-        path:"tasks",
-        component:TaskListComponent
+        path: "tasks",
+        component: TaskListComponent,
+        title: "TODO | tasks"
     },
     {
-        path:"add",
-        component:AddTaskComponent
+        path: "add",
+        component: AddTaskComponent,
+        title: "TODO | create"
     },
     {
-        path:"",redirectTo:"tasks",pathMatch:"full"
-    },{
-        path:"tasks/:id/update",
-        component:UpdateTaskComponent
-    },{
-        path:"tasks/:id",
-        component:ViewTaskComponent
+        path: "tasks/:id/update",
+        component: UpdateTaskComponent,
+        title: "TODO | edit"
+    }, {
+        path: "tasks/:id",
+        component: ViewTaskComponent,
+        title: "TODO | view"
+    }, {
+        path: "signup",
+        component: SignupLoginComponent,
+        title: "TODO | signup"
+    }, {
+        path: "login",
+        component: SignupLoginComponent,
+        title: "TODO | login"
     }
-
 ];

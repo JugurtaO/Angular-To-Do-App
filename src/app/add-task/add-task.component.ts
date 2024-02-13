@@ -6,10 +6,11 @@ import { User } from '../Models/user';
 import { TaskService } from '../services/task.service';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [RouterOutlet, FormsModule,MatFormFieldModule, MatInputModule],
+  imports: [RouterOutlet, FormsModule,MatFormFieldModule, MatInputModule,MatDatepickerModule],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css',
 
@@ -19,6 +20,7 @@ export class AddTaskComponent implements OnInit {
   //the author id is normaly retrieven from the current session.Here I'll retrieve it from input value until i implement user authentication 
   public currentUser = new User();
   public task: Task = new Task();
+  
   constructor(private taskService: TaskService,
             private router:Router) { }
   ngOnInit(): void {

@@ -1,24 +1,28 @@
-import { Component, OnInit, computed, numberAttribute, signal } from '@angular/core';
+import { AfterViewInit, Component, OnInit, computed, numberAttribute, signal } from '@angular/core';
 import { Task } from '../Models/task';
 import { NgFor } from '@angular/common';
 import { TaskService } from '../services/task.service';
 import { Router, RouterOutlet } from '@angular/router';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { NavbarComponent } from '../navbar/navbar.component';
-
+import { MatIcon } from '@angular/material/icon';
 
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [NgFor,RouterOutlet,AddTaskComponent,NavbarComponent],
+  imports: [NgFor,RouterOutlet,AddTaskComponent,NavbarComponent,MatIcon],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css'
 })
-export class TaskListComponent implements OnInit {
+export class TaskListComponent implements OnInit  {
+  
+
+
+
+  constructor(private taskService: TaskService, private router:Router ) { }
 
   public tasks:Task[]=[] ;
-  constructor(private taskService: TaskService, private router:Router) { }
   ngOnInit(): void {
     this.getTasks();
   }
@@ -48,5 +52,9 @@ export class TaskListComponent implements OnInit {
   public viewTask(id:number){
     this.router.navigate([`/tasks/${id}`]);
   }
+
+
+
  
+
 }

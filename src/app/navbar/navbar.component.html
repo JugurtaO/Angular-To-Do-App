@@ -17,31 +17,34 @@
             [matMenuTriggerFor]="menu">
             <mat-icon>menu</mat-icon>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item> <a routerLink="tasks" routerLinkActive="active" class="nav-link">All tasks</a>
+                <button mat-menu-item> <a routerLink="tasks" routerLinkActive="active" class="nav-link">My todo tasks</a>
                 </button>
-                <button mat-menu-item> <a routerLink="add" routerLinkActive="active" class="nav-link">Add task</a>
+                <button mat-menu-item> <a routerLink="add" routerLinkActive="active" class="nav-link">Add new task</a>
                 </button>
             </mat-menu>
         </button>
         <span>TODO App</span>
         <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-            <mat-icon>favorite</mat-icon>
-        </button>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"
-            [matMenuTriggerFor]="shareMenu">
-            <mat-icon>share</mat-icon>
-            <mat-menu #shareMenu="matMenu">
-                <button mat-menu-item> <a href="https://www.linkedin.com/in/jugurtao/"><mat-icon aria-hidden="false"
-                            aria-label="Example LinkedIn icon" fontIcon="linkedin"></mat-icon>
-                        LinkedIn</a>
-                </button>
-                <button mat-menu-item> <a href="https://github.com/jugurtao"><mat-icon aria-hidden="false"
-                            aria-label="Example Github icon" fontIcon="linkedin"></mat-icon>
+        
+        <button class="btn btn-dark"><a routerLink="login" routerLinkActive="active" class="nav-link" >Login</a></button>
 
-                        Github</a>
-                </button>
-            </mat-menu>
-        </button>
+      
+
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"
+                [matMenuTriggerFor]="shareMenu">
+                <mat-icon>share</mat-icon>
+                <mat-menu #shareMenu="matMenu">
+                    <button mat-menu-item> <a href="https://www.linkedin.com/in/jugurtao/" class="attShare"><mat-icon
+                                aria-hidden="false" aria-label="Example LinkedIn icon" fontIcon="linkedin"></mat-icon>
+                            LinkedIn</a>
+                    </button>
+                    <button mat-menu-item> <a href="https://github.com/jugurtao" class="attShare"><mat-icon
+                                aria-hidden="false" aria-label="Example Github icon" fontIcon="linkedin"></mat-icon>
+
+                            Github</a>
+                    </button>
+                </mat-menu>
+            </button>
+
     </mat-toolbar>
 </p>
