@@ -4,7 +4,7 @@ import { AddTaskComponent } from './add-task/add-task.component';
 import { UpdateTaskComponent } from './update-task/update-task.component';
 import { ViewTaskComponent } from './view-task/view-task.component';
 import { SignupLoginComponent } from './signup-login/signup-login.component';
-import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
     {
@@ -33,5 +33,16 @@ export const routes: Routes = [
         path: "login",
         component: SignupLoginComponent,
         title: "TODO | login"
+    },{
+        path:"home",
+        component:HomeComponent,
+        title:"TODO | home"
+    },
+    {
+        path:"",
+        redirectTo:"home",
+        pathMatch:'full'
+        
+        
     }
 ];

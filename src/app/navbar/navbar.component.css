@@ -9,3 +9,8 @@
     flex: 1 1 auto;
   }
   
+  .btn{
+   height: 40px;
+   border-radius: 15px;
+   text-align: center;
+  }
