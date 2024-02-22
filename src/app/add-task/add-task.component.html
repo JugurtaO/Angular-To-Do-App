@@ -1,26 +1,29 @@
-<!-- <form (submit)="addTask(task)">
-    
-    <div class="form-group">
-        <label for="text"> todo text</label>
-        <input type="text" name="text" id="text" class="form-control" [(ngModel)]="task.text">
-    </div>
+<form class="example-form" (submit)="addTask(task)">
 
-    <button class="btn btn-success">add</button>
-   
+
+  <mat-form-field class="example-full-width">
+    <mat-label>new task ...</mat-label>
+    <textarea matInput placeholder="Do it your way..." cols="30" rows="2" [(ngModel)]="task.text"
+      name="text"></textarea>
+
+  </mat-form-field>
+
+
+  <div class="p-field p-col-8 p-md-2">
+    <label>Due date</label>
+    <p-calendar [showTime]="true" hourFormat="24" dateFormat="yy-mm-dd" [(ngModel)]="dueDate" [iconDisplay]="'input'"
+      [showIcon]="true"></p-calendar>
+  </div>
+
+  <button class="btn btn-success">add</button>
+
+
 </form>
 
- -->
-
- <form class="example-form" (submit)="addTask(task)">
-    <mat-form-field class="example-full-width">
-      <mat-label>new task ...</mat-label>
-      <textarea matInput placeholder="Do it your way..." cols="30" rows="2" [(ngModel)]="task.text" name="text"></textarea>
-    </mat-form-field>
-
-   
-    
-    
-    <button class="btn btn-success">add</button>
-  </form>
-  
- 
+<!-- <mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker"  [(ngModel)]="dueDate">
+    <mat-hint>MM/DD/YYYY </mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field> -->

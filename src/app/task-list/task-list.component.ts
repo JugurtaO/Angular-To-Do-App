@@ -31,6 +31,8 @@ export class TaskListComponent implements OnInit  {
     //asynchronus call
     this.taskService.getAllTasks().subscribe(data => {
       this.tasks=data;
+      //inverser les tâches pour afficher les plus récentes en  premier
+      this.tasks.reverse()
     })
   }
 

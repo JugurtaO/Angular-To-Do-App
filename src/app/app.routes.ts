@@ -15,7 +15,7 @@ export const routes: Routes = [
     {
         path: "add",
         component: AddTaskComponent,
-        title: "TODO | create"
+        title: "TODO | new"
     },
     {
         path: "tasks/:id/update",
