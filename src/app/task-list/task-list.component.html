@@ -21,9 +21,16 @@
                     {{task.text}}
                 </p>
                 <ng-template pTemplate="footer">
-                    <p-button  label="Edit" icon="pi pi-check" (click)="updateTask(task.id)" styleClass="p-button-info"></p-button>
+                    <!-- <p-button  label="Edit" icon="pi pi-check" (click)="updateTask(task.id)" styleClass="p-button-info"></p-button>
                     <p-button  label="Delete" icon="pi pi-times"  (click)="deleteTask(task.id)" styleClass="p-button-danger"
-                        [style]="{ 'margin-left': '.5em' }"></p-button>
+                        [style]="{ 'margin-left': '.5em' }"></p-button> -->
+
+                        <div class="card flex justify-content-center gap-2">
+                           <p-toast></p-toast>
+   
+                            <p-confirmPopup></p-confirmPopup>
+                            <p-button (click)="confirmDeleteTask($event,task)" icon="pi pi-times" label="Delete" severity="danger"></p-button>
+                        </div>
                 </ng-template>
             </p-card>
         </div>
