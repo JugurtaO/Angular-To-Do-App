@@ -8,12 +8,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CalendarModule } from "primeng/calendar";
+import { CardModule } from 'primeng/card';
 
 import { provideNativeDateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, CalendarModule],
+  imports: [RouterOutlet, FormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, CalendarModule,CardModule],
   providers: [provideNativeDateAdapter()],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css',
@@ -61,7 +62,6 @@ export class AddTaskComponent implements OnInit {
     return `${year}-${month}-${day} ${hours}:${minutes}`;
   }
   changeDate($event: any) {
-  
     this.dueDate=this.formatDate($event.target.value);
   }
   

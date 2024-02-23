@@ -10,33 +10,33 @@ export const routes: Routes = [
     {
         path: "tasks",
         component: TaskListComponent,
-        title: "TODO | tasks"
+        title: "TODO | Tasks"
     },
     {
         path: "add",
         component: AddTaskComponent,
-        title: "TODO | new"
+        title: "TODO | New task"
     },
     {
         path: "tasks/:id/update",
         component: UpdateTaskComponent,
-        title: "TODO | edit"
+        title: "TODO | Edit"
     }, {
         path: "tasks/:id",
         component: ViewTaskComponent,
-        title: "TODO | view"
+        title: "TODO | View"
     }, {
         path: "signup",
         component: SignupLoginComponent,
-        title: "TODO | signup"
+        title: "TODO | Signup"
     }, {
         path: "login",
         component: SignupLoginComponent,
-        title: "TODO | login"
+        title: "TODO | Login"
     },{
         path:"home",
         component:HomeComponent,
-        title:"TODO | home"
+        title:"TODO | Home"
     },
     {
         path:"",
