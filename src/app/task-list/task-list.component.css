@@ -1,0 +1,11 @@
+
+.card{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    border: none;
+}
+
+.badge{
+    border-radius: 50px;
+}

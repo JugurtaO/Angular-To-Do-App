@@ -6,23 +6,25 @@ import { Router, RouterOutlet } from '@angular/router';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { MatIcon } from '@angular/material/icon';
-
-
+import { ButtonModule } from 'primeng/button';
+import { CarouselModule, } from 'primeng/carousel';
+import { CardModule } from 'primeng/card';
+import { BadgeModule } from 'primeng/badge';
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [NgFor,RouterOutlet,AddTaskComponent,NavbarComponent,MatIcon],
+  imports: [NgFor, RouterOutlet, AddTaskComponent, NavbarComponent, MatIcon,CarouselModule,ButtonModule,CardModule,BadgeModule],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css'
 })
-export class TaskListComponent implements OnInit  {
-  
+export class TaskListComponent implements OnInit {
 
 
 
-  constructor(private taskService: TaskService, private router:Router ) { }
 
-  public tasks:Task[]=[] ;
+  constructor(private taskService: TaskService, private router: Router) { }
+
+  public tasks: Task[] = [];
   ngOnInit(): void {
     this.getTasks();
   }
@@ -30,7 +32,7 @@ export class TaskListComponent implements OnInit  {
   public getTasks() {
     //asynchronus call
     this.taskService.getAllTasks().subscribe(data => {
-      this.tasks=data;
+      this.tasks = data;
       //inverser les tâches pour afficher les plus récentes en  premier
       this.tasks.reverse()
     })
@@ -40,23 +42,25 @@ export class TaskListComponent implements OnInit  {
 
   public deleteTask(id: number) {
     //notify the backend and delete the requested task
-    this.taskService.deleteTask(id).subscribe(data=>{
+    this.taskService.deleteTask(id).subscribe(data => {
       //Then update current tasks list
       this.getTasks();
     });
   }
 
-//navigate to update task page
-  public updateTask(id:number){
+  //navigate to update task page
+  public updateTask(id: number) {
     this.router.navigate([`/tasks/${id}/update`])
   }
 
-  public viewTask(id:number){
+  public viewTask(id: number) {
     this.router.navigate([`/tasks/${id}`]);
   }
 
 
 
- 
+
+
+
 
 }

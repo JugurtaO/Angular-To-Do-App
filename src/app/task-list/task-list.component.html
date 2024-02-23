@@ -1,51 +1,31 @@
-<table class="table table-striped" id="container">
 
-    <thead>
-        <tr>
-            <th>N°</th>
-            <th>text </th>
-            <th>author</th>
-            <th> actions
-            </th>
+<div class="card">
+    <div> <p-button  class="badge" label="In progress" icon="pi pi-users" styleClass="p-button-warning" badge="13"
+            badgeClass="p-badge-warning"></p-button>
+    </div>
+    <div > <p-button  class="badge" label="Done" icon="pi pi-users" styleClass="p-button-success" badge="8"
+            badgeClass="p-badge-success"></p-button>
+    </div>
 
+</div>
 
-        </tr>
-    </thead>
-    <tbody>
+<p-carousel [value]="tasks" [numVisible]="3" [numScroll]="3" [circular]="false">
+    <ng-template let-task pTemplate="item">
+        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
 
-        <tr *ngFor="let task of tasks">
-            <td>{{task.id}}</td>
-            <td>{{task.text}}</td>
-            <td>{{task.author.firstName}}</td>
-            <!-- <td><button class="btn btn-light" (click)="viewTask(task.id)">view </button></td> -->
-            <td> <mat-icon (click)="viewTask(task.id)">visibility</mat-icon></td>
-
-
-
-            <!-- <td><button class="btn btn-info" (click)="updateTask(task.id)">edit </button></td> -->
-            <td><mat-icon (click)="updateTask(task.id)">edit</mat-icon></td>
-
-
-
-            <!-- <td> <button class="btn btn-danger" (click)="deleteTask(task.id)">delete </button></td> -->
-            <td> <mat-icon (click)="deleteTask(task.id)">delete_forever</mat-icon></td>
-        </tr>
-
-
-
-
-
-    </tbody>
-</table> 
-
-
-
-
-<!-- #region -->
-
-
-
-
-
-
-
+            <p-card header="{{task.author.firstName}}" subheader="due date: {{task.dueDate}}"   [style]="{ width: '360px' }">
+                <ng-template pTemplate="header">
+                    <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+                </ng-template>
+                <p>
+                    {{task.text}}
+                </p>
+                <ng-template pTemplate="footer">
+                    <p-button  label="Edit" icon="pi pi-check" (click)="updateTask(task.id)" styleClass="p-button-info"></p-button>
+                    <p-button  label="Delete" icon="pi pi-times"  (click)="deleteTask(task.id)" styleClass="p-button-danger"
+                        [style]="{ 'margin-left': '.5em' }"></p-button>
+                </ng-template>
+            </p-card>
+        </div>
+    </ng-template>
+</p-carousel>

@@ -1,29 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { Task } from '../Models/task';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { User } from '../Models/user';
 import { TaskService } from '../services/task.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { CalendarModule } from "primeng/calendar"; 
+import { CalendarModule } from "primeng/calendar";
 
-import {provideNativeDateAdapter} from '@angular/material/core';
-import { ContentObserver } from '@angular/cdk/observers';
-
+import { provideNativeDateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule,CalendarModule],
-  providers:[provideNativeDateAdapter()],
+  imports: [RouterOutlet, FormsModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, CalendarModule],
+  providers: [provideNativeDateAdapter()],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.css',
 
 })
 export class AddTaskComponent implements OnInit {
-  
-  dueDate: Date=new Date();
+
+  public dueDate:string='';
 
 
   //the author id is normaly retrieven from the current session.Here I'll retrieve it from input value until i implement user authentication 
@@ -43,38 +41,28 @@ export class AddTaskComponent implements OnInit {
       return
 
     }
-  
+
     //assign the dueDate to the task
-    this.task.dueDate= this.getFormattedDate(this.dueDate);
+    this.task.dueDate = this.dueDate;
 
     //save task
-    console.log(">>> date before SAVE:",this.task.dueDate);
 
-    // this.taskService.addTask(task).subscribe(data => { console.log(data) });
-    // this.router.navigate(["/tasks"]);
+    this.taskService.addTask(task).subscribe(data => { console.log(data) });
+    this.router.navigate(["/tasks"]);
   };
 
- getFormattedDate(now:Date): Date {
-    
+  formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
 
-    const year: number = now.getFullYear();
-    const month: number = now.getMonth() + 1;
-    const day: number = now.getDate();
-    const hours: number = now.getHours();
-    const minutes: number = now.getMinutes();
-
-    // Ensure two-digit representation for month, day, hour, and minute
-    const monthStr: string = (month < 10 ? '0' : '') + month;
-    const dayStr: string = (day < 10 ? '0' : '') + day;
-    const hoursStr: string = (hours < 10 ? '0' : '') + hours;
-    const minutesStr: string = (minutes < 10 ? '0' : '') + minutes;
-
-    // Create a formatted date string in "yyyy-mm-dd hh:mm" format
-    const formattedDateString: string = `${year}-${monthStr}-${dayStr} ${hoursStr}:${minutesStr}`;
-
-    // Create a Date object from the formatted string
-    const formattedDate: Date = new Date(formattedDateString.replace('T', ' '));
-
-    return formattedDate;
-}
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
+  }
+  changeDate($event: any) {
+  
+    this.dueDate=this.formatDate($event.target.value);
+  }
+  
 }
