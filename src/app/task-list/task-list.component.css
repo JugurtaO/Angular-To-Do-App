@@ -9,3 +9,7 @@
 .badge{
     border-radius: 50px;
 }
+
+.custom-dialog {
+    height: 250px;
+}

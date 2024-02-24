@@ -1,4 +1,4 @@
-import {  Component, OnInit, computed, numberAttribute, signal } from '@angular/core';
+import { Component, OnInit, computed, numberAttribute, signal } from '@angular/core';
 import { Task } from '../Models/task';
 import { NgFor } from '@angular/common';
 import { TaskService } from '../services/task.service';
@@ -13,20 +13,31 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { BadgeModule } from 'primeng/badge';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { DialogModule } from 'primeng/dialog';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { UpdateTaskComponent } from '../update-task/update-task.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { CalendarModule } from "primeng/calendar";
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [NgFor, RouterOutlet, AddTaskComponent, NavbarComponent, MatIcon,CarouselModule,ButtonModule,CardModule,BadgeModule,ConfirmPopupModule,ToastModule],
+  imports: [NgFor, RouterOutlet, AddTaskComponent, NavbarComponent, MatIcon,
+     CarouselModule, ButtonModule, CardModule, BadgeModule, ConfirmPopupModule, 
+     ToastModule, DialogModule,UpdateTaskComponent,MatInputModule,MatFormFieldModule,
+    MatDatepickerModule,CalendarModule,NgxMaterialTimepickerModule],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css',
-  providers:[ConfirmationService,MessageService]
+  providers: [ConfirmationService, MessageService,provideNativeDateAdapter()]
 })
 export class TaskListComponent implements OnInit {
 
 
 
 
-  constructor(private taskService: TaskService, private router: Router,private confirmationService: ConfirmationService, private messageService: MessageService) { }
+  constructor(private taskService: TaskService, private router: Router, private confirmationService: ConfirmationService, private messageService: MessageService) { }
 
   public tasks: Task[] = [];
   ngOnInit(): void {
@@ -65,24 +76,35 @@ export class TaskListComponent implements OnInit {
 
 
 
-  confirmDeleteTask(event:Event,task:Task) {
+  confirmDeleteTask(event: Event, task: Task) {
     this.confirmationService.confirm({
-        target: event.target as EventTarget,
-        message: 'Do you want to delete this task?',
-        icon: 'pi pi-info-circle',
-        acceptButtonStyleClass: 'p-button-danger p-button-sm',
-        accept: () => {    
-          //delete requested task
-          this.deleteTask(task.id);      
-          //then display dialogConfirmation message
-          this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: `task n°${task.id} successfully deleted`, life: 3000 });
-        },
-        reject: () => {
-            this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
-        }
+      target: event.target as EventTarget,
+      message: 'Do you want to delete this task?',
+      icon: 'pi pi-info-circle',
+      acceptButtonStyleClass: 'p-button-danger p-button-sm',
+      accept: () => {
+        //delete requested task
+        this.deleteTask(task.id);
+        //then display dialogConfirmation message
+        this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: `task n°${task.id} successfully deleted`, life: 3000 });
+      },
+      reject: () => {
+        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+      }
     });
-}
+  }
 
 
+  //utils of udpate task dialog (pop up)
+  visible: boolean = false;
+
+  showDialog() {
+    this.visible = true;
+  }
+
+
+  /*the following code is to be removed when the issue of injecting the app-update-task component in 
+  p-dialog angular material component is resolved.[because it is redenant code this has been already written in update task component view-model]
+  */
 
 }

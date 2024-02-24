@@ -29,11 +29,30 @@
                     <div class="card flex justify-content-center gap-2">
                         <p-toast></p-toast>
                         <p-confirmPopup></p-confirmPopup>
-                        <p-button (click)="confirmDeleteTask($event,task)" icon="pi pi-times" label="Delete"
-                            severity="danger"></p-button>
+                        <p-button (click)="showDialog()" icon="pi pi-external-link" label="Edit" severity="secondary"
+                            [rounded]="true" [text]="true" [raised]="true"></p-button>
+                        <p-button (click)="confirmDeleteTask($event,task)" label="Delete" severity="danger"
+                            [text]="true" [raised]="true"></p-button>
+
+
                     </div>
                 </ng-template>
             </p-card>
         </div>
+        <!--UPDATE TASK DIALOG (pop up)--------------------------------------------------------------------------->
+        <div class="card flex justify-content-center">
+            <p-dialog header="Dot it your way .." [(visible)]="visible" [style]="{width :'50vw'}" class="custom-dialog">
+
+
+
+   
+                <app-update-task [taskInput]="task"></app-update-task>
+
+
+
+            </p-dialog>
+        </div>
+        <!--UPDATE TASK DIALOG (pop up)--------------------------------------------------------------------------->
     </ng-template>
+
 </p-carousel>

@@ -1,16 +1,12 @@
-<form (submit)="updateTask(task.id)">
+<!-- <form (submit)="updateTask(task.id)">
     <div class="card border-secondary mb-3" style="max-width: 24rem; ">
         <div class="card-header">TODO N° {{task.id}}</div>
         <div class="card-body text-secondary">
-          <!-- <h5 class="card-title">{{task.author.firstName}} {{task.author.lastName}}</h5> -->
           <textarea name="text" id="" cols="30" rows="2" autofocus [(ngModel)]="task.text" ></textarea>
         </div>
       </div>
     
-    <!-- <div class="form-group">
-        <label for="text"> todo text</label>
-        <input type="text" name="newText" id="text" class="form-control" [(ngModel)]="task.text">
-    </div> -->
+ 
 
 
     <button class="btn btn-info">update</button>
@@ -18,4 +14,53 @@
 </form>
 
 
+ -->
 
+
+
+
+
+
+<div class="main">
+
+  <form class="example-form" (submit)="updateTask(id)">
+
+    <p-card header="Edit your task" subheader="" [style]="{ width: '450px' }">
+      <ng-template pTemplate="header">
+        <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+      </ng-template>
+
+      <!-- card body-->
+      <div class="cardBody">
+        <div class="description">
+          <span class="p-float-label">
+            <textarea id="float-input" rows="5" cols="30" pInputTextarea [(ngModel)]="newTask.newText" name="text"></textarea>
+            <label for="float-input">New description</label>
+          </span>
+
+        </div>
+
+        <div class="date">
+          <mat-form-field>
+            <mat-label>Set due date</mat-label>
+            <input matInput [matDatepicker]="picker" (dateChange)="changeDate($event)">
+
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="time">
+          
+          <input matInput type="text" placeholder="Set time HH:mm" [ngxTimepicker]="timepicker"  [format]='24'>
+          <ngx-material-timepicker #timepicker  (timeChanged)="changeTime($event)"></ngx-material-timepicker>
+        </div>
+      </div>
+      <!-- card body-->
+      <ng-template pTemplate="footer">
+        <button class="btn btn-info">Updtae</button>
+        <!-- <p-button label="Save" icon="pi pi-check" type="submit" ></p-button> -->
+      </ng-template>
+    </p-card>
+
+  </form>
+</div>
