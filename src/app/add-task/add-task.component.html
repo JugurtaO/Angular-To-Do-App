@@ -25,7 +25,7 @@
 
   <form class="example-form" (submit)="addTask(task)">
 
-    <p-card header="New task" subheader="Description" [style]="{ width: '450px' }">
+    <p-card header="New task" subheader="" [style]="{ width: '450px' }">
       <ng-template pTemplate="header">
         <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
       </ng-template>
@@ -49,10 +49,15 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
         </div>
+        <div class="time">
+          
+          <input matInput type="text" placeholder="Set time HH:mm" [ngxTimepicker]="timepicker"  [format]='24'>
+          <ngx-material-timepicker #timepicker  (timeChanged)="changeTime($event)"></ngx-material-timepicker>
+        </div>
       </div>
       <!-- card body-->
       <ng-template pTemplate="footer">
-        <p-button label="Save" icon="pi pi-check" type="submit" ></p-button>
+        <p-button label="Save" icon="pi pi-check" type="submit"></p-button>
       </ng-template>
     </p-card>
 

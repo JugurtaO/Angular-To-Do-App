@@ -1,11 +1,11 @@
-
 <div class="card">
-    <div> <p-button  class="badge" label="In progress" icon="pi pi-users" styleClass="p-button-warning" badge="13"
+    <div> <p-button class="badge" label="In progress" icon="pi pi-users" styleClass="p-button-warning" badge="13"
             badgeClass="p-badge-warning"></p-button>
     </div>
-    <div > <p-button  class="badge" label="Done" icon="pi pi-users" styleClass="p-button-success" badge="8"
+    <div> <p-button class="badge" label="Done" icon="pi pi-users" styleClass="p-button-success" badge="8"
             badgeClass="p-badge-success"></p-button>
     </div>
+
 
 </div>
 
@@ -13,7 +13,8 @@
     <ng-template let-task pTemplate="item">
         <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
 
-            <p-card header="{{task.author.firstName}}" subheader="due date: {{task.dueDate}}"   [style]="{ width: '360px' }">
+            <p-card header="{{task.author.firstName}}" subheader="due date: {{task.dueDate}}"
+                [style]="{ width: '360px' }">
                 <ng-template pTemplate="header">
                     <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
                 </ng-template>
@@ -25,12 +26,12 @@
                     <p-button  label="Delete" icon="pi pi-times"  (click)="deleteTask(task.id)" styleClass="p-button-danger"
                         [style]="{ 'margin-left': '.5em' }"></p-button> -->
 
-                        <div class="card flex justify-content-center gap-2">
-                           <p-toast></p-toast>
-   
-                            <p-confirmPopup></p-confirmPopup>
-                            <p-button (click)="confirmDeleteTask($event,task)" icon="pi pi-times" label="Delete" severity="danger"></p-button>
-                        </div>
+                    <div class="card flex justify-content-center gap-2">
+                        <p-toast></p-toast>
+                        <p-confirmPopup></p-confirmPopup>
+                        <p-button (click)="confirmDeleteTask($event,task)" icon="pi pi-times" label="Delete"
+                            severity="danger"></p-button>
+                    </div>
                 </ng-template>
             </p-card>
         </div>

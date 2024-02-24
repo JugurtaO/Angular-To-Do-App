@@ -71,14 +71,18 @@ export class TaskListComponent implements OnInit {
         message: 'Do you want to delete this task?',
         icon: 'pi pi-info-circle',
         acceptButtonStyleClass: 'p-button-danger p-button-sm',
-        accept: () => {           
-            this.deleteTask(task.id);
-            this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: `task n°${task.id} successfully deleted`, life: 3000 });
+        accept: () => {    
+          //delete requested task
+          this.deleteTask(task.id);      
+          //then display dialogConfirmation message
+          this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: `task n°${task.id} successfully deleted`, life: 3000 });
         },
         reject: () => {
             this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
         }
     });
 }
+
+
 
 }
