@@ -25,12 +25,12 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
   selector: 'app-task-list',
   standalone: true,
   imports: [NgFor, RouterOutlet, AddTaskComponent, NavbarComponent, MatIcon,
-     CarouselModule, ButtonModule, CardModule, BadgeModule, ConfirmPopupModule, 
-     ToastModule, DialogModule,UpdateTaskComponent,MatInputModule,MatFormFieldModule,
-    MatDatepickerModule,CalendarModule,NgxMaterialTimepickerModule],
+    CarouselModule, ButtonModule, CardModule, BadgeModule, ConfirmPopupModule,
+    ToastModule, DialogModule, UpdateTaskComponent, MatInputModule, MatFormFieldModule,
+    MatDatepickerModule, CalendarModule, NgxMaterialTimepickerModule],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css',
-  providers: [ConfirmationService, MessageService,provideNativeDateAdapter()]
+  providers: [ConfirmationService, MessageService, provideNativeDateAdapter()]
 })
 export class TaskListComponent implements OnInit {
 
@@ -40,6 +40,7 @@ export class TaskListComponent implements OnInit {
   constructor(private taskService: TaskService, private router: Router, private confirmationService: ConfirmationService, private messageService: MessageService) { }
 
   public tasks: Task[] = [];
+  selectedTaskToUpdate: Task = new Task();
   ngOnInit(): void {
     this.getTasks();
   }
@@ -50,6 +51,7 @@ export class TaskListComponent implements OnInit {
       this.tasks = data;
       //inverser les tâches pour afficher les plus récentes en  premier
       this.tasks.reverse()
+
     })
   }
 
@@ -98,13 +100,11 @@ export class TaskListComponent implements OnInit {
   //utils of udpate task dialog (pop up)
   visible: boolean = false;
 
-  showDialog() {
+  showDialog(taskToUpdate: Task) {
+    this.selectedTaskToUpdate = taskToUpdate;
     this.visible = true;
   }
 
 
-  /*the following code is to be removed when the issue of injecting the app-update-task component in 
-  p-dialog angular material component is resolved.[because it is redenant code this has been already written in update task component view-model]
-  */
 
 }

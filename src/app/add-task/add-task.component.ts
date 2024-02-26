@@ -11,7 +11,7 @@ import { CalendarModule } from "primeng/calendar";
 import { CardModule } from 'primeng/card';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-import { __param } from 'tslib';
+import { STATUS } from '../status';
 @Component({
   selector: 'app-add-task',
   standalone: true,
@@ -50,11 +50,16 @@ export class AddTaskComponent implements OnInit {
     //replace the default 00:00 time by the correct selected user time
     this.dueDate=this.dueDate.split(' ')[0]+` ${this.time}`;
 
+    //The status is by default IN_PROGRESS 
+    this.task.status=STATUS.IN_PROGRESS;
+    console.log(">>>",this.task.status);
+
     //assign the dueDate to the task
     this.task.dueDate = this.dueDate;
+
    
 
-    console.log(">>dueDate after:",this.dueDate);
+
 
     //save task
 

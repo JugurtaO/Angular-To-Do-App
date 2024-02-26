@@ -23,19 +23,19 @@
 
 <div class="main">
 
-  <form class="example-form" (submit)="updateTask(id)">
+  <form class="example-form" (submit)="updateTask(taskInput.id)">
 
     <p-card header="Edit your task" subheader="" [style]="{ width: '450px' }">
       <ng-template pTemplate="header">
-        <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+        <img alt="Card" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDJozYRy8pHRc7XXPgyuEmTEDGqb4iW1238A&usqp=CAU" />
       </ng-template>
 
       <!-- card body-->
       <div class="cardBody">
         <div class="description">
           <span class="p-float-label">
-            <textarea id="float-input" rows="5" cols="30" pInputTextarea [(ngModel)]="newTask.newText" name="text"></textarea>
-            <label for="float-input">New description</label>
+            <textarea id="float-input" rows="5" cols="30" pInputTextarea [(ngModel)]="newTask.newText" name="text" [value]="taskInput.text"></textarea>
+            
           </span>
 
         </div>
@@ -57,7 +57,7 @@
       </div>
       <!-- card body-->
       <ng-template pTemplate="footer">
-        <button class="btn btn-info">Updtae</button>
+        <button class="btn btn-info">Update</button>
         <!-- <p-button label="Save" icon="pi pi-check" type="submit" ></p-button> -->
       </ng-template>
     </p-card>
