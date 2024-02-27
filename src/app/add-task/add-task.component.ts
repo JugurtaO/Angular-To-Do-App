@@ -52,7 +52,6 @@ export class AddTaskComponent implements OnInit {
 
     //The status is by default IN_PROGRESS 
     this.task.status=STATUS.IN_PROGRESS;
-    console.log(">>>",this.task.status);
 
     //assign the dueDate to the task
     this.task.dueDate = this.dueDate;
@@ -69,7 +68,7 @@ export class AddTaskComponent implements OnInit {
 
 
 
-  // It formates given date of dd/mm/yyyy format and returns a string date of yyyy-mm-dd format 
+  // It formates the given date of dd/mm/yyyy format and returns a string date of yyyy-mm-dd format 
   formatDate(date: Date): string {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
