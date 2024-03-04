@@ -1,6 +1,6 @@
-import { Component, OnInit, computed, numberAttribute, signal } from '@angular/core';
+import { Component, OnInit, computed, signal } from '@angular/core';
 import { Task } from '../Models/task';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { TaskService } from '../services/task.service';
 import { Router, RouterOutlet } from '@angular/router';
 import { AddTaskComponent } from '../add-task/add-task.component';
@@ -24,7 +24,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [NgFor, RouterOutlet, AddTaskComponent, NavbarComponent, MatIcon,
+  imports: [NgFor,NgIf, RouterOutlet, AddTaskComponent, NavbarComponent, MatIcon,
     CarouselModule, ButtonModule, CardModule, BadgeModule, ConfirmPopupModule,
     ToastModule, DialogModule, UpdateTaskComponent, MatInputModule, MatFormFieldModule,
     MatDatepickerModule, CalendarModule, NgxMaterialTimepickerModule],
@@ -40,17 +40,31 @@ export class TaskListComponent implements OnInit {
   constructor(private taskService: TaskService, private router: Router, private confirmationService: ConfirmationService, private messageService: MessageService) { }
 
   public tasks: Task[] = [];
-  selectedTaskToUpdate: Task = new Task();
+  public selectedTaskToUpdate: Task = new Task();
+  private inProgressBadge=signal<number>(0);
+  private doneBadge=signal<number>(0);
+readonly inProgressBadgeStr= computed<string>(()=>this.inProgressBadge().toString());
+readonly doneBadgeStr= computed<string>(()=>this.doneBadge().toString());
+
+
+
+
+
   ngOnInit(): void {
     this.getTasks();
+    
   }
-
+  
+  
   public getTasks() {
+    this.inProgressBadge.set(0);
+    this.doneBadge.set(0);
     //asynchronus call
     this.taskService.getAllTasks().subscribe(data => {
       this.tasks = data;
       //inverser les tâches pour afficher les plus récentes en  premier
       this.tasks.reverse()
+      this.tasks.forEach(task=> task.status=="IN_PROGRESS"?this.inProgressBadge.update(v=>v+1):this.doneBadge.update(v=>v+1));
 
     })
   }

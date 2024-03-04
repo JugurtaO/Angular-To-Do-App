@@ -1,8 +1,8 @@
 <div class="card">
-    <div> <p-button class="badge" label="In progress" icon="pi pi-users" styleClass="p-button-warning" badge="13"
-            badgeClass="p-badge-warning"></p-button>
+    <div> <p-button class="badge" label="In progress" icon="pi pi-users" styleClass="p-button-warning"
+            [badge]="inProgressBadgeStr()" badgeClass="p-badge-warning"></p-button>
     </div>
-    <div> <p-button class="badge" label="Done" icon="pi pi-users" styleClass="p-button-success" badge="8"
+    <div> <p-button class="badge" label="Done" icon="pi pi-users" styleClass="p-button-success" [badge]="doneBadgeStr()"
             badgeClass="p-badge-success"></p-button>
     </div>
 
@@ -10,13 +10,19 @@
 </div>
 
 <p-carousel [value]="tasks" [numVisible]="3" [numScroll]="3" [circular]="false">
+    <div class="EmptyList" *ngIf="tasks.length==0">
+        <p>No task todo ...</p>
+    </div>
     <ng-template let-task pTemplate="item">
         <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
 
-            <p-card header="{{task.author.firstName}}" subheader="due date: {{task.dueDate}}" [style]="{ width: '360px' }">
+            <p-card header="{{task.author.firstName}}" subheader="due date: {{task.dueDate}}"
+                [style]="{ width: '360px' }">
                 <ng-template pTemplate="header">
-                    
-                    <img alt="Card" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDJozYRy8pHRc7XXPgyuEmTEDGqb4iW1238A&usqp=CAU" /> <!--https://primefaces.org/cdn/primeng/images/usercard.png-->
+
+                    <img alt="Card"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDJozYRy8pHRc7XXPgyuEmTEDGqb4iW1238A&usqp=CAU" />
+                    <!--https://primefaces.org/cdn/primeng/images/usercard.png-->
                 </ng-template>
                 <p>
                     {{task.text}}
@@ -26,8 +32,8 @@
                     <div class="card flex justify-content-center gap-2">
                         <p-toast></p-toast>
                         <p-confirmPopup></p-confirmPopup>
-                        <p-button (click)="showDialog(task)" icon="pi pi-external-link" label="Edit" severity="secondary"
-                            [rounded]="true" [text]="true" [raised]="true"></p-button>
+                        <p-button (click)="showDialog(task)" icon="pi pi-external-link" label="Edit"
+                            severity="secondary" [rounded]="true" [text]="true" [raised]="true"></p-button>
                         <p-button (click)="confirmDeleteTask($event,task)" label="Delete" severity="danger"
                             [text]="true" [raised]="true"></p-button>
 
