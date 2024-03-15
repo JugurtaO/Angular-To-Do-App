@@ -48,21 +48,23 @@ export class AddTaskComponent implements OnInit {
 
 
     //replace the default 00:00 time by the correct selected user time
-    this.dueDate=this.dueDate.split(' ')[0]+` ${this.time}`;
+    this.dueDate = this.dueDate.split(' ')[0] + ` ${this.time}`;
 
-    //The status is by default IN_PROGRESS 
-    this.task.status=STATUS.IN_PROGRESS;
+    // Default status  IN_PROGRESS 
+    this.task.status = STATUS.IN_PROGRESS;
 
     //assign the dueDate to the task
     this.task.dueDate = this.dueDate;
 
-   
+
 
 
 
     //save task
 
-    this.taskService.addTask(task).subscribe(data => { console.log(data) });
+    this.taskService.addTask(task)
+      .then(data => { console.log(data) })
+      .catch(err => console.log("[AddTask] Error: ", err));
     this.router.navigate(["/tasks"]);
   }
 
@@ -86,11 +88,11 @@ export class AddTaskComponent implements OnInit {
   }
 
   //EvenListenner that changes the date when the user finishes its time selection
-  changeTime(selectedTime:string) {
+  changeTime(selectedTime: string) {
     this.time = selectedTime;
-  
+
   }
 
-  
+
 
 }

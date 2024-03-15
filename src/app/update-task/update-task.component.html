@@ -54,6 +54,10 @@
           <input matInput type="text" placeholder="Set time HH:mm" [ngxTimepicker]="timepicker"  [format]='24'>
           <ngx-material-timepicker #timepicker  (timeChanged)="changeTime($event)"></ngx-material-timepicker>
         </div>
+        <div class="status">
+          <label for="check"> Mark as done </label>
+          <input  id="check" type="checkbox" [(ngModel)]="markedAsDone"  [ngModelOptions]="{standalone: true}"/> 
+        </div>
       </div>
       <!-- card body-->
       <ng-template pTemplate="footer">

@@ -1,10 +1,13 @@
 .container{
-    background: url("https://images.pexels.com/photos/2736499/pexels-photo-2736499.jpeg?cs=srgb&dl=pexels-content-pixie-2736499.jpg&fm=jpg")  no-repeat  fixed 50% ;
+   
+     background: url("https://images.unsplash.com/photo-1527168027773-0cc890c4f42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80")  no-repeat  fixed 50% ;
     background-size: cover;
-    height: 400px;
+    height: 400px; 
     text-align: center;
+    margin-top: 20%;
     border-radius: 20px;
-}
+}  
+
 
 .container h3{
     /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
@@ -12,7 +15,8 @@
     justify-content:center;
     font-family: 'Dancing Script', cursive;
     font-size: 3.3em;
-    text-shadow: 1px 3px 2px white;
+    text-shadow: 1px 3px 2px black;
+    color: blacks;
     
      
 }
@@ -22,7 +26,8 @@
     font-family: 'Dancing Script', cursive;
     font-size: 1.5em;
     font-size: 2.3em;
-    text-shadow: 1px 3px 2px white;
+    text-shadow: 1px 3px 2px black;
+    color: black;
    
     
     
